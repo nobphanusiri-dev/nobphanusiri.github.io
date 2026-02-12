@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffe4e1; /* สีชมพูอ่อน */
+            font-family: 'Tahoma', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            z-index: 1;
+        }
+
+        h1 { color: #ff4d6d; }
+        p { color: #555; line-height: 1.6; }
+
+        .heart {
+            font-size: 50px;
+            color: #ff4d6d;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover { background-color: #ff758f; transform: translateY(-3px); }
+
+        /* ตกแต่งพื้นหลังด้วยหัวใจลอยๆ */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.2);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: move up 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>ถึง... หวานใจ</h1>
+        <p>
+            ขอบคุณนะที่เข้ามาเป็นเรื่องราวดีๆ ในทุกวันของเค้า<br>
+            อยู่เป็นรอยยิ้มให้เค้าแบบนี้ไปนานๆ เลยนะ
+        </p>
+    </div>
+
+    <script>
+        // สร้างหัวใจลอยๆ ในพื้นหลัง
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
